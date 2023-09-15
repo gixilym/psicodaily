@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import MyTabs from "./src/navigation/MyTabs";
+import * as Font from "expo-font";
 
-export default function App() {
+function App() {
+  useEffect(() => {
+    Font.loadAsync({
+      poppinsLight: require("./assets/fonts/Poppins-Regular.ttf"),
+      poppinsMedium: require("./assets/fonts/Poppins-Medium.ttf"),
+      poppinsRegular: require("./assets/fonts/Poppins-Regular.ttf"),
+      poppinsSemiBold: require("./assets/fonts/Poppins-SemiBold.ttf"),
+      poppinsBold: require("./assets/fonts/Poppins-Bold.ttf"),
+    });
+
+    return () => console.log("me limpio");
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

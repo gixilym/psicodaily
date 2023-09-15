@@ -1,13 +1,11 @@
 {
   "expo": {
-    "name": "soy-re-piola",
-    "slug": "soy-re-piola",
+    "name": "psicodaily",
+    "slug": "psicodaily",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,12 +17,15 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.anonymous.psicodaily"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f7d2621f-2f26-4162-b7f2-764060b68c70"
       }
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
+    "scheme": "psicodaily"
   }
 }

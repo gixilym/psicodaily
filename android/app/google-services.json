@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "538240762909",
+    "project_id": "psicodaily-65fed",
+    "storage_bucket": "psicodaily-65fed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538240762909:android:4815464f722a697b8772f4",
+        "android_client_info": {
+          "package_name": "psicodaily.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmYwq25fpwKwnTJByaSyvAaE_5MObnie0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
