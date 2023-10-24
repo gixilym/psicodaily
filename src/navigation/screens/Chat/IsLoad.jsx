@@ -13,18 +13,18 @@ export default IsLoad;
 
 const styles = StyleSheet.create({
   messageBubble: {
-    borderRadius: 10,
+    //borderRadius: 10,
     padding: 10,
     marginVertical: 4,
   },
   botMessage: {
     alignSelf: "flex-start",
-    backgroundColor: "#2caba6",
+    backgroundColor: "rgba(44, 171, 166, 0.38)",
   },
   messageText: {
     color: "#fff",
     fontSize: 20,
-    fontFamily: "poppinsLight",
+    //fontFamily: "//poppinsLight",
     letterSpacing: 1,
   },
 });

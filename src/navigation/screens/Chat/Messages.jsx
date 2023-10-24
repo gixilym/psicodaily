@@ -1,95 +1,49 @@
-import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, Animated, View } from "react-native";
+import React from "react";
+import { Text, StyleSheet, View } from "react-native";
 
 function Messages(props) {
-  const { message } = props,
-    [slideUserAnim] = useState(new Animated.Value(0)),
-    [slideBotAnim] = useState(new Animated.Value(0)),
-    [shouldAnimate, setShouldAnimate] = useState(false);
-
-  const slideUser = slideUserAnim.interpolate({
-      inputRange: [0, 1],
-      outputRange: [60, 80],
-    }),
-    slideBot = slideBotAnim.interpolate({
-      inputRange: [0, 1],
-      outputRange: [-30, -10],
-    });
-
-  useEffect(() => {
-    if (!shouldAnimate && message.sender === "bot") {
-      Animated.timing(slideBotAnim, {
-        toValue: 1,
-        duration: 200,
-        useNativeDriver: false,
-      }).start();
-    } else if (message.sender === "user") {
-      setShouldAnimate(true);
-    } else {
-      setShouldAnimate(false);
-    }
-  }, [message]);
-
-  useEffect(() => {
-    if (shouldAnimate) {
-      Animated.timing(slideUserAnim, {
-        toValue: 1,
-        duration: 200,
-        useNativeDriver: false,
-      }).start();
-    }
-  }, [shouldAnimate]);
+  const { message } = props;
 
   return (
-    <Animated.View
+    <View
       key={message.id}
-      style={[
-        messageContainer,
-        {
-          transform: [
-            { translateX: message.sender === "user" ? slideUser : slideBot },
-          ],
-        },
-      ]}
+      style={message.sender === "user" ? userMsgStyle : botMsgStyle}
     >
-      <View
-        style={[
-          messageBubble,
-          message.sender === "user" ? userMessage : botMessage,
-        ]}
-      >
+      <View style={message.sender === "user" ? userMessage : botMessage}>
         <Text style={messageText}>{message.text}</Text>
       </View>
-    </Animated.View>
+    </View>
   );
 }
 
 export default Messages;
 
 const styles = StyleSheet.create({
-    messageContainer: {
-      flexDirection: "row",
-      alignItems: "center",
+    userMsgStyle: {
+      width: "100%",
+      alignItems: "flex-end",
     },
-    messageBubble: {
-      borderRadius: 10,
-      padding: 10,
-      width: "80%",
+    botMsgStyle: {
+      alignItems: "flex-start",
+      width: "100%",
     },
     userMessage: {
-      alignSelf: "flex-end",
-      backgroundColor: "rgba(107, 99, 99, 0.6)",
+      //borderRadius: 10,
+      padding: 10,
+      width: "85%",
+      backgroundColor: "rgba(17, 25, 40, 0.54)",
     },
     botMessage: {
-      alignSelf: "flex-start",
-      backgroundColor: "#2caba6",
+      //borderRadius: 10,
+      padding: 10,
+      width: "85%",
+      backgroundColor: "rgba(44, 171, 166, 0.38)",
     },
     messageText: {
       color: "#fff",
       fontSize: 20,
-      fontFamily: "poppinsLight",
+      //fontFamily: "//poppinsLight",
       letterSpacing: 1,
     },
   }),
-  { messageBubble, messageContainer, messageText, botMessage, userMessage } =
-    styles;
+  { userMsgStyle, botMsgStyle, messageText, botMessage, userMessage } = styles;

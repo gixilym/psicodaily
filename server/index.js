@@ -4,15 +4,25 @@ const express = require("express"),
   { config } = require("dotenv"),
   OpenAI = require("openai");
 
+//? Configurations.
 config();
 app.use(cors({ origin: "http://localhost:19006" }));
 app.use(express.json());
 
+//? Routes.
 app.post("/response", (req, res) => {
   const { prompt } = req.body;
   main(prompt.text, res);
 });
 
+// app.post("/savename", (req, res) => {
+//   const { userName } = req.body;
+//   console.log("Nombre: " + userName);
+//   res.json(userName);
+//   //* Guardar en base de datos.
+// });
+
+//? Functions
 async function main(prompt, res) {
   const openai = new OpenAI({
       apiKey: "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",

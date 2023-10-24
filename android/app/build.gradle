@@ -81,9 +81,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.anonymous.psicodaily'
+    namespace 'com.stafflym.psicodaily'
     defaultConfig {
-        applicationId 'com.anonymous.psicodaily'
+        applicationId 'com.stafflym.psicodaily'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

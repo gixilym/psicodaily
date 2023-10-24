@@ -1,83 +1,93 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { useZustand } from "../../../store/zustand";
 import { AntDesign } from "@expo/vector-icons";
+import SectionHome from "./SectionHome";
+import { RECORD_PAGE } from "../../../utils/const";
 
-function RecordChat(props) {
-  const { test } = props;
+function RecordChat() {
+  const { recordChat } = useZustand(),
+    goTo = useNavigation(),
+    userMessages = recordChat?.filter(user => user.sender === "user");
 
   return (
-    <View style={container}>
-      <View style={recordContainer}>
-        <Text style={title}>Historial</Text>
-        <AntDesign name="arrowsalt" size={20} color="#fff" />
-      </View>
+    <SectionHome
+      contStyle={contStyle}
+      pressAction={() => goTo.navigate(RECORD_PAGE)}
+    >
+      <View>
+        <View style={recordContStyle}>
+          <Text style={titleStyle}>Historial</Text>
 
-      <View style={recordContainerList}>
-        {test.map(t => (
-          <View style={recordList} key={t}>
-            <AntDesign name="caretright" size={15} color="#B6EADA" />
-            <Text style={record}>{t}</Text>
-          </View>
-        ))}
+          <AntDesign name="arrowsalt" size={20} color="#fff" />
+        </View>
+
+        <View style={recordContListStyle}>
+          {userMessages.length > 0 ? (
+            userMessages.map(message => (
+              <View style={recordItemStyle} key={message.id}>
+                <AntDesign name="caretright" size={15} color="#B6EADA" />
+                <Text style={recordTextStyle}>{message.text}</Text>
+              </View>
+            ))
+          ) : (
+            <View style={recordItemStyle}>
+              <AntDesign name="caretright" size={15} color="#B6EADA" />
+              <Text style={recordTextStyle}>Historial vacío</Text>
+            </View>
+          )}
+        </View>
       </View>
-    </View>
+    </SectionHome>
   );
 }
 
 export default RecordChat;
 
 const styles = StyleSheet.create({
-    container: {
-      width: "90%",
-      height: 160,
-      borderRadius: 10,
+    contStyle: {
       alignItems: "start",
-      justifyContent: "center",
-      backgroundColor: "rgba(80, 80, 80, 0.5)",
-      backdropFilter: "blur(5px)",
-      border: "0px solid rgba(255, 255, 255, 0.2)",
-      paddingHorizontal: 20,
-      paddingVertical: 5,
-      boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
+      paddingTop: 10,
     },
-    title: {
+    titleStyle: {
       fontSize: 24,
       letterSpacing: 1,
       textTransform: "uppercase",
-
       width: "100%",
       color: "#B6EADA",
       textTransform: "capitalize",
-      fontFamily: "poppinsMedium",
+      //fontFamily: "//poppinsMedium",
     },
-    recordContainer: {
+    recordContStyle: {
       alignItems: "center",
       justifyContent: "space-between",
       flexDirection: "row",
       width: "95%",
     },
-    recordContainerList: {
-      alignItems: "center",
+    recordContListStyle: {
+      alignItems: "start",
+      rowGap: 8,
       justifyContent: "center",
       width: "100%",
     },
-    recordList: {
+    recordItemStyle: {
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "start",
       width: "100%",
       columnGap: 8,
     },
-    record: {
+    recordTextStyle: {
       color: "#fff",
-      fontFamily: "poppinsLight",
+      //fontFamily: "//poppinsLight",
     },
   }),
   {
-    container,
-    title,
-    record,
-    recordContainer,
-    recordList,
-    recordContainerList,
+    contStyle,
+    titleStyle,
+    recordTextStyle,
+    recordContStyle,
+    recordItemStyle,
+    recordContListStyle,
   } = styles;

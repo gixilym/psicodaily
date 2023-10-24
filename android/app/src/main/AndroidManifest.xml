@@ -30,6 +30,7 @@
         <data android:scheme="com.anonymous.psicodaily"/>
         <data android:scheme="psicodaily"/>
         <data android:scheme="exp+psicodaily"/>
+        <data android:scheme="com.stafflym.psicodaily"/>
       </intent-filter>
     </activity>
     <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" android:exported="false"/>

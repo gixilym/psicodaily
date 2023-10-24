@@ -2,50 +2,67 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { useZustand } from "../../../store/zustand";
+import SectionHome from "./SectionHome";
 
 function WelcomeMsg() {
-  const emojiColor = "#b3a4a4";
+  const { nickNameUser } = useZustand();
+
   return (
-    <View style={welcomeContainer}>
-      <Text style={welcome}>Bienvenido, Gixi.{"\n"}Cómo te sientes hoy?</Text>
+    <SectionHome contStyle={contStyle}>
+      <Text style={welcome}>
+        Bienvenido, {nickNameUser}.{"\n"}Cómo te sientes hoy?
+      </Text>
       <View style={emojis}>
-        <Entypo name="emoji-happy" size={32} color={emojiColor} />
-        <Entypo name="emoji-neutral" size={32} color={emojiColor} />
-        <Entypo name="emoji-sad" size={32} color={emojiColor} />
-        <FontAwesome5 name="sad-cry" size={32} color={emojiColor} />
+        <View style={emojiContainer}>
+          <Entypo name="emoji-happy" size={32} color="#b9be65" />
+        </View>
+
+        <View style={emojiContainer}>
+          <Entypo name="emoji-neutral" size={32} color="#789cce" />
+        </View>
+
+        <View style={emojiContainer}>
+          <Entypo name="emoji-sad" size={32} color="#61966c" />
+        </View>
+
+        <View style={emojiContainer}>
+          <FontAwesome5 name="sad-cry" size={32} color="#5c49c8" />
+        </View>
       </View>
-    </View>
+    </SectionHome>
   );
 }
 
 export default WelcomeMsg;
 
 const styles = StyleSheet.create({
-    welcomeContainer: {
-      width: "90%",
+    contStyle: {
       height: 150,
-      borderRadius: 10,
       flexDirection: "column",
-      alignItems: "start",
       justifyContent: "space-evenly",
-      backgroundColor: "rgba(80, 80, 80, 0.5)",
-      backdropFilter: "blur(5px)",
-      paddingHorizontal: 20,
-      paddingVertical: 5,
+      paddingTop: 0,
+      paddingBottom: 0,
     },
     welcome: {
       fontSize: 24,
-
       width: "100%",
       color: "#B6EADA",
-      fontFamily: "poppinsSemiBold",
+      //fontFamily: "//poppinsSemiBold",
       letterSpacing: 1.3,
     },
     emojis: {
       flexDirection: "row",
-      width: "80%",
+      width: "70%",
       alignItems: "center",
       justifyContent: "space-between",
     },
+    emojiContainer: {
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#000",
+      padding: "2em",
+      borderRadius: 100,
+    },
   }),
-  { welcomeContainer, welcome, emojis } = styles;
+  { contStyle, welcome, emojis, emojiContainer } = styles;

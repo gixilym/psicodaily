@@ -1,4 +1,4 @@
-package com.anonymous.psicodaily;
+package com.stafflym.psicodaily;
 
 import android.app.Application;
 import android.content.res.Configuration;

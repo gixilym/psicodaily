@@ -13,13 +13,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.stafflym.psicodaily"
+
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.psicodaily"
+      "package": "com.stafflym.psicodaily"
     },
     "extra": {
       "eas": {

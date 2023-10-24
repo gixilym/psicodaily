@@ -1,17 +1,19 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAoF0-vIpojzgvfnPIIDaS5iKlPoFzNGZE",
-  authDomain: "psicodaily-48afc.firebaseapp.com",
-  projectId: "psicodaily-48afc",
-  storageBucket: "psicodaily-48afc.appspot.com",
-  messagingSenderId: "274767819936",
-  appId: "1:274767819936:web:960dbfb30049839a4d45c5",
+  apiKey: "AIzaSyCQXCyANbIWRQWURrY-T-qz9wip4187MDo",
+  authDomain: "psicodaily-8c4ba.firebaseapp.com",
+  projectId: "psicodaily-8c4ba",
+  storageBucket: "psicodaily-8c4ba.appspot.com",
+  messagingSenderId: "682899102315",
+  appId: "1:682899102315:web:9c48bb90a80974b973af2e",
 };
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-//IOS: 274767819936-mnu4to09sl8o7b0mdg7ckcs8v6aq4765.apps.googleusercontent.com
-//Android: 274767819936-bbbh2u6gp295m5sdpv2675emi8kit18k.apps.googleusercontent.com
+//ID Web - 1052137670730-942e4tktt96ujhr8mmlc8mhg9frsdr21.apps.googleusercontent.com
+
+//IOS - 1052137670730-h0nec1jrv3vefc7v19htgampdq2c169p.apps.googleusercontent.com

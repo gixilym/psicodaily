@@ -2,19 +2,18 @@ import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
-import LogInBtn from "../LogIn/LogInBtn";
+import { CONFIG_PAGE } from "../../../utils/const";
 
 function Header() {
   const goTo = useNavigation();
+
   return (
     <View style={header}>
-      <LogInBtn />
-
       <TouchableOpacity
-        onPress={() => goTo.navigate("Configuration")}
+        onPress={() => goTo.navigate(CONFIG_PAGE)}
         style={setting}
       >
-        <AntDesign name="setting" size={24} color="#fff" />
+        <AntDesign name="setting" size={24} color="#939695" />
       </TouchableOpacity>
     </View>
   );
@@ -32,8 +31,8 @@ const styles = StyleSheet.create({
       height: 36,
     },
     setting: {
-      backgroundColor: "rgba(80, 80, 80, 0.5)",
-      borderRadius: 8,
+      // backgroundColor: "rgba(80, 80, 80, 0.5)",
+      //borderRadius: 8,
       padding: 5,
       height: 40,
       flexDirection: "row",

@@ -5,31 +5,29 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
-  Keyboard,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 function ControlsChat(props) {
   const { inputText, setInputText, handleSendMessage } = props;
 
+  // const handleTextInputChange = () => {
+  //   // Actualizar el estado del input para forzar el renderizado del componente `TextInput`.
+  //   setInputText(inputText);
+  // };
+
   return (
-    <KeyboardAvoidingView
-      style={inputContainer}
-      behavior={Platform.OS === "ios" ? "padding" : null}
-      enabled
-      keyboardVerticalOffset={Platform.OS === "ios" ? 20 : 0}
-    >
+    <KeyboardAvoidingView style={inputContainer} behavior="padding" enabled>
       <TextInput
         style={input}
         onChangeText={text => setInputText(text)}
         value={inputText}
         placeholder="Escribe tu mensaje..."
         placeholderTextColor="#2caba6"
-        onSubmitEditing={Keyboard.dismiss}
       />
 
       <TouchableOpacity style={sendBtn} onPress={handleSendMessage}>
-        <AntDesign name="arrowright" size={28} color="#000" />
+        <AntDesign name="arrowright" size={30} color="#2caba6" />
       </TouchableOpacity>
     </KeyboardAvoidingView>
   );
@@ -42,22 +40,22 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       alignItems: "center",
       borderTopWidth: 0,
-      marginBottom: 20,
+      width: "100%",
+      height: "auto",
     },
     input: {
       flex: 1,
-      backgroundColor: "rgb(0, 0, 0)",
       padding: 8,
-      fontFamily: "poppinsLight",
+      //fontFamily: "//poppinsLight",
       letterSpacing: 0.8,
-      color: "white",
+      color: "#fff",
       paddingLeft: 20,
     },
     sendBtn: {
       height: 50,
       width: 60,
-      backgroundColor: "#2caba6",
-      borderRadius: 25,
+      borderTopLeftRadius: 25,
+      borderBottomLeftRadius: 25,
       justifyContent: "center",
       alignItems: "center",
     },

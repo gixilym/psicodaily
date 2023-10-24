@@ -1,4 +1,4 @@
-package com.anonymous.psicodaily;
+package com.stafflym.psicodaily;
 
 import android.os.Build;
 import android.os.Bundle;

@@ -4,24 +4,58 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./screens/Home/Home";
 import Chat from "../navigation/screens/Chat/Chat";
 import LogIn from "../navigation/screens/LogIn/LogIn";
-import Configuration from "./screens/Home/Configuration";
+import Configuration from "./screens/Home/Configuration/Configuration";
+import RecordScreen from "./screens/Home/RecordScreen";
 import { AntDesign } from "@expo/vector-icons";
+import {
+  CONFIG_PAGE,
+  DIARY_PAGE,
+  HOME_PAGE,
+  RECORD_PAGE,
+  WELCOME_PAGE,
+} from "../utils/const";
+import DiaryScreen from "./screens/Home/DiaryScreen";
 
 function HomeStackScreen() {
   const Stack = createNativeStackNavigator();
+
   return (
     <Stack.Navigator
+      initialRouteName={WELCOME_PAGE}
       screenOptions={{
         headerStyle: { backgroundColor: "#000" },
         headerTintColor: "#fff",
       }}
     >
       <Stack.Screen
-        options={{ headerShown: false }}
-        name="Home"
+        options={{
+          headerShown: false,
+        }}
+        name={HOME_PAGE}
         component={Home}
       />
-      <Stack.Screen name="Configuration" component={Configuration} />
+
+      <Stack.Screen name={CONFIG_PAGE} component={Configuration} />
+
+      <Stack.Screen
+        options={{
+          headerShown: false,
+          gestureDirection: "vertical",
+        }}
+        name={RECORD_PAGE}
+        component={RecordScreen}
+      />
+
+      <Stack.Screen
+        options={{
+          headerShown: false,
+          gestureDirection: "vertical",
+        }}
+        name={DIARY_PAGE}
+        component={DiaryScreen}
+      />
+
+      <Stack.Screen name="HomeScreen" component={Home} />
     </Stack.Navigator>
   );
 }
@@ -29,12 +63,16 @@ function HomeStackScreen() {
 function MyTabs() {
   const Tab = createBottomTabNavigator(),
     optionsNavigator = {
-      tabBarStyle: { backgroundColor: "#000000", borderTopWidth: 0 },
+      tabBarStyle: {
+        backgroundColor: "#000",
+        borderTopColor: "#2caba6",
+        borderTopWidth: 0.3,
+        paddingTop: 15,
+      },
     },
     optionsHome = {
-      tabBarLabel: "",
-      tabBarBadge: 2,
       headerShown: false,
+      tabBarLabel: "",
       tabBarShowLabel: false,
       tabBarActiveTintColor: "#2caba6",
       tabBarIcon: ({ color }) => (
@@ -43,8 +81,6 @@ function MyTabs() {
     },
     optionsChat = {
       tabBarLabel: "",
-      tabBarBadge: 1,
-      headerShown: false,
       tabBarShowLabel: false,
       tabBarActiveTintColor: "#2caba6",
       tabBarIcon: ({ color }) => (
@@ -53,7 +89,6 @@ function MyTabs() {
     },
     optionsLogIn = {
       tabBarLabel: "",
-      headerShown: false,
       tabBarShowLabel: false,
       tabBarActiveTintColor: "#2caba6",
       tabBarIcon: ({ color }) => (
@@ -62,7 +97,10 @@ function MyTabs() {
     };
 
   return (
-    <Tab.Navigator screenOptions={optionsNavigator} initialRouteName="Home">
+    <Tab.Navigator
+      screenOptions={optionsNavigator}
+      initialRouteName={HOME_PAGE}
+    >
       <Tab.Screen
         name="Home"
         component={HomeStackScreen}

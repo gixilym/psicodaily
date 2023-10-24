@@ -1,49 +1,65 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { useMyContext } from "../Context";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
+import NameApp from "./screens/LogIn/NameApp";
+import { useZustand } from "../store/zustand";
+import { YOUR_DATA_PAGE } from "../utils/const";
 
 function Welcome() {
-  const { setThisPage } = useMyContext();
+  const { setThisPage } = useZustand();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Bienvenido a PsicoDaily</Text>
-      <Text style={styles.text}>
-        Cuando te sientas sol@ puedes venir aquí a desahogarte
-      </Text>
+    <SafeAreaView style={container}>
+      <View>
+        <NameApp />
+        <Text style={description}>Tu espacio de apoyo</Text>
+      </View>
+
       <TouchableOpacity
-        onPress={() => setThisPage("YourData")}
-        style={styles.buttonContainer}
+        onPress={() => setThisPage(YOUR_DATA_PAGE)}
+        style={buttonContainer}
       >
-        <Text style={styles.buttonText}>Empezemos</Text>
+        <Text style={buttonText}>COMIENZA</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 
 export default Welcome;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#333",
-    padding: 20,
-  },
-  text: {
-    color: "white",
-    fontSize: 24,
-    marginBottom: 20,
-    textAlign: "center",
-  },
-  buttonContainer: {
-    backgroundColor: "#007bff",
-    padding: 10,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 18,
-  },
-});
+    container: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "#000000",
+      rowGap: 60,
+    },
+    description: {
+      color: "#FFF",
+      fontSize: 24,
+      textAlign: "center",
+      //fontFamily: "//poppinsLight",
+    },
+    buttonContainer: {
+      backgroundColor: "#2caba6",
+      //borderRadius: 8,
+      height: 40,
+      width: "45%",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    buttonText: {
+      color: "#fff",
+      fontSize: 24,
+      //fontFamily: "//poppinsSemiBold",
+      letterSpacing: 1,
+    },
+  }),
+  { buttonContainer, buttonText, description, container } = styles;
