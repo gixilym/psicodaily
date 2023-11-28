@@ -6,14 +6,14 @@ import {
   StyleSheet,
   SafeAreaView,
 } from "react-native";
-import LogInBtn from "./LogInBtn";
-import GoogleBtn from "./GoogleBtn";
-import FacebookBtn from "./FacebookBtn";
-import Divider from "./Divider";
-import SignIn from "./SignIn";
-import NameApp from "./NameApp";
-import { Entypo } from "@expo/vector-icons";
-import BackgroundImage from "../../BackgroundImage";
+import LogInBtn from "./LogInBtn.jsx";
+import GoogleBtn from "./GoogleBtn.jsx";
+import FacebookBtn from "./FacebookBtn.jsx";
+import Divider from "./Divider.jsx";
+import SignIn from "./SignIn.jsx";
+import NameApp from "./NameApp.jsx";
+import BackgroundImage from "../../BackgroundImage.jsx";
+import { Entypo as EyeIcon } from "@expo/vector-icons";
 
 function LogIn() {
   const [mail, setMail] = useState(""),
@@ -22,15 +22,15 @@ function LogIn() {
 
   function selectEye() {
     return shownPass ? (
-      <Entypo name="eye" size={24} color="#8f8f8f" />
+      <EyeIcon name="eye" size={24} color="#8f8f8f" />
     ) : (
-      <Entypo name="eye-with-line" size={24} color="#8f8f8f" />
+      <EyeIcon name="eye-with-line" size={24} color="#8f8f8f" />
     );
   }
 
   return (
     <BackgroundImage>
-      <SafeAreaView style={container}>
+      <SafeAreaView style={sfStyle}>
         <NameApp />
 
         <View style={containerLogs}>
@@ -45,7 +45,7 @@ function LogIn() {
             <TextInput
               onChangeText={mail => setMail(mail)}
               style={input}
-              placeholder="Ingrese su email"
+              placeholder="Mail"
               placeholderTextColor="#9d9d9d"
             />
 
@@ -78,13 +78,11 @@ function LogIn() {
 export default LogIn;
 
 const styles = StyleSheet.create({
-    container: {
+    sfStyle: {
       flex: 1,
-      backgroundColor: "transparent",
       alignItems: "center",
       justifyContent: "center",
-      rowGap: 40,
-      paddingTop: 130,
+      rowGap: 50,
       width: "90%",
     },
     containerLogs: {
@@ -101,7 +99,7 @@ const styles = StyleSheet.create({
     },
     input: {
       backgroundColor: "rgba(55, 55, 55, 0.5)",
-      //borderRadius: 10,
+      borderRadius: 18,
       paddingHorizontal: 20,
       paddingVertical: 15,
       fontSize: 16,
@@ -111,7 +109,7 @@ const styles = StyleSheet.create({
     },
     loginButton: {
       backgroundColor: "#2196F3",
-      //borderRadius: 10,
+      borderRadius: 18,
       padding: 10,
     },
     loginButtonText: {
@@ -135,11 +133,9 @@ const styles = StyleSheet.create({
     },
   }),
   {
-    container,
-
+    sfStyle,
     input,
     inputContainer,
-
     eyeContainer,
     inputEyeContainer,
     containerLogs,

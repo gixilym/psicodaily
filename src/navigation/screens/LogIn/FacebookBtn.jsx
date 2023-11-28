@@ -1,10 +1,14 @@
 import React from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import Svg, { Path, G } from "react-native-svg";
 
 function FacebookBtn() {
   return (
-    <TouchableOpacity onPress={() => promptAsync()} style={containerFacebook}>
+    <TouchableOpacity
+      onPress={() => Alert.alert("Comming soon..")}
+      // onPress={() => promptAsync()}
+      style={containerFacebook}
+    >
       <View style={facebookSvg}>
         <Svg width="30px" height="30px" viewBox="-5 0 20 20" version="1.1">
           <G
@@ -36,25 +40,24 @@ const styles = StyleSheet.create({
       borderColor: "rgb(55, 55, 55)",
       width: "100%",
       height: 50,
-      //borderRadius: 8,
+      borderRadius: 18,
       flexDirection: "row",
       alignItems: "center",
-      justifyContent: "start",
-      columnGap: 20,
-      paddingHorizontal: 15,
+      justifyContent: "flex-start",
+      columnGap: 10,
+      paddingHorizontal: 10,
     },
     facebookSvg: {
-      height: 30,
-      //borderRadius: 8,
+      height: "100%",
+      alignItems: "center",
+      justifyContent: "center",
       width: 45,
       alignItems: "center",
     },
     facebookText: {
       color: "#9d9d9d",
       fontSize: 20,
-      //fontFamily: "//poppinsLight",
-      height: "100%",
-      lineHeight: 55,
+      height: "auto",
     },
   }),
   { facebookText, facebookSvg, containerFacebook } = styles;

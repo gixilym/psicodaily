@@ -3,6 +3,8 @@ const express = require("express"),
   cors = require("cors"),
   { config } = require("dotenv"),
   OpenAI = require("openai");
+// const mongoose = require("mongoose"),
+// DB_URI = "mongodb://localhost:27017/psicodaily";
 
 //? Configurations.
 config();
@@ -15,12 +17,22 @@ app.post("/response", (req, res) => {
   main(prompt.text, res);
 });
 
-// app.post("/savename", (req, res) => {
-//   const { userName } = req.body;
-//   console.log("Nombre: " + userName);
-//   res.json(userName);
-//   //* Guardar en base de datos.
-// });
+// async function connectDB() {
+//   await mongoose.connect(
+//     DB_URI,
+//     {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//     },
+//     err => {
+//       if (err) {
+//         console.error("Conexión fallida");
+//       } else {
+//         console.log("DB conectado");
+//       }
+//     }
+//   );
+// }
 
 //? Functions
 async function main(prompt, res) {
@@ -34,9 +46,7 @@ async function main(prompt, res) {
       messages: [
         {
           role: "system",
-          content: prompt.includes("zapato-12-gol")
-            ? prompt
-            : botPrompt + prompt,
+          content: prompt.includes("metegol") ? prompt : botPrompt + prompt,
         },
       ],
     }),
@@ -46,3 +56,4 @@ async function main(prompt, res) {
 }
 
 app.listen(3001, () => console.log("Server started in port 3001"));
+// connectDB();

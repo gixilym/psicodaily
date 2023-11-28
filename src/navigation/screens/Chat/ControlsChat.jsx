@@ -4,20 +4,14 @@ import {
   StyleSheet,
   TouchableOpacity,
   KeyboardAvoidingView,
-  Platform,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 function ControlsChat(props) {
   const { inputText, setInputText, handleSendMessage } = props;
 
-  // const handleTextInputChange = () => {
-  //   // Actualizar el estado del input para forzar el renderizado del componente `TextInput`.
-  //   setInputText(inputText);
-  // };
-
   return (
-    <KeyboardAvoidingView style={inputContainer} behavior="padding" enabled>
+    <KeyboardAvoidingView style={inputContainer} enabled>
       <TextInput
         style={input}
         onChangeText={text => setInputText(text)}
@@ -42,6 +36,7 @@ const styles = StyleSheet.create({
       borderTopWidth: 0,
       width: "100%",
       height: "auto",
+      paddingVertical: 10,
     },
     input: {
       flex: 1,

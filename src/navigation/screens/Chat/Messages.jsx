@@ -28,13 +28,13 @@ const styles = StyleSheet.create({
       width: "100%",
     },
     userMessage: {
-      //borderRadius: 10,
+      borderRadius: 18,
       padding: 10,
       width: "85%",
       backgroundColor: "rgba(17, 25, 40, 0.54)",
     },
     botMessage: {
-      //borderRadius: 10,
+      borderRadius: 18,
       padding: 10,
       width: "85%",
       backgroundColor: "rgba(44, 171, 166, 0.38)",

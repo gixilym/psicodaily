@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { auth } from "../../../../server/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { HOME_PAGE } from "../../../utils/const";
+import { HOME_PAGE } from "../../../utils/const.js";
 
 function LogInBtn(props) {
   const { atHeader = false, mail, password } = props,
@@ -12,7 +12,7 @@ function LogInBtn(props) {
   function logIn() {
     signInWithEmailAndPassword(auth, mail, password)
       .then(credentialUser => {
-        Alert.alert("INICIASTE");
+        Alert.alert("Sesion iniciada con: " + credentialUser.user.email);
         console.log(credentialUser.user);
       })
       .then(() => goTo.navigate(HOME_PAGE))

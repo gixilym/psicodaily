@@ -1,5 +1,5 @@
 import create from "zustand";
-import { WELCOME_PAGE } from "../utils/const";
+import { WELCOME_PAGE } from "../utils/const.js";
 
 export const useZustand = create(set => ({
   thisPage: WELCOME_PAGE,
@@ -33,4 +33,12 @@ export const useZustand = create(set => ({
   setDiaryTexts: newTexts => set({ diaryTexts: newTexts }),
   clearDiaryTexts: () =>
     set({ diaryTexts: "Empieza a escribir en tu diario..." }),
+
+  moodSelected: null,
+  setMoodSelected: newMoodSelected => set({ moodSelected: newMoodSelected }),
+  moodDate: "xx/xx/xxxx",
+  setMoodDate: newDate => set({ moodDate: newDate }),
+  moodDescription: "",
+  setMoodDescription: newDescription =>
+    set({ moodDescription: newDescription }),
 }));

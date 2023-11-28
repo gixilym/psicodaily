@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",
-    "@react-native-async-storage/async-storage": "1.18.2",
+    "@react-native-async-storage/async-storage": "^1.18.2",
     "@react-native-community/blur": "^4.3.2",
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/native": "^6.0.0",
@@ -36,6 +36,7 @@
     "express": "^4.18.2",
     "firebase": "^10.3.1",
     "modules": "^0.4.0",
+    "mongoose": "^7.6.3",
     "openai": "^4.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

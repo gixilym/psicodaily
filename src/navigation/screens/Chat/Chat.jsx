@@ -114,7 +114,7 @@ function Chat() {
   //! Tal vez la pantalla no sube por scroll view (probar quitándolo)
   return (
     <BackgroundImage style={bkStyle}>
-      <SafeAreaView>
+      <SafeAreaView style={sfStyle}>
         <View style={cleanChatStyle}>
           <TouchableOpacity>
             <MaterialIcons
@@ -157,8 +157,13 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       backgroundColor: "#000",
     },
+    sfStyle: {
+      width: "100%",
+      height: "100%",
+      paddingTop: "13%",
+    },
     scrollViewStyle: {
-      paddingHorizontal: 1,
+      // paddingHorizontal: 1,
       width: "100%",
       height: "100%",
     },
@@ -178,4 +183,4 @@ const styles = StyleSheet.create({
       justifyContent: "flex-end",
     },
   }),
-  { bkStyle, msgContStyle, cleanChatStyle, scrollViewStyle } = styles;
+  { bkStyle, sfStyle, msgContStyle, cleanChatStyle, scrollViewStyle } = styles;

@@ -1,15 +1,20 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { Entypo } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
 import { useZustand } from "../../../store/zustand";
 import SectionHome from "./SectionHome";
+import { useNavigation } from "@react-navigation/native";
+import { MOOD_PAGE } from "../../../utils/const";
+import { Entypo, FontAwesome5 } from "@expo/vector-icons";
 
 function WelcomeMsg() {
-  const { nickNameUser } = useZustand();
+  const { nickNameUser } = useZustand(),
+    goTo = useNavigation();
 
   return (
-    <SectionHome contStyle={contStyle}>
+    <SectionHome
+      contStyle={contStyle}
+      pressAction={() => goTo.navigate(MOOD_PAGE)}
+    >
       <Text style={welcome}>
         Bienvenido, {nickNameUser}.{"\n"}Cómo te sientes hoy?
       </Text>
